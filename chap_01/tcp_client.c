@@ -33,6 +33,7 @@ int main(int argc, char* argv[])
 	if(connect(sock, (struct sockaddr*)&serv_addr, sizeof(serv_addr))==-1) 
 		error_handling("connect() error!");
 
+	//write 호출과 read 호출을 불일치시킨다.
 	while(read_len=read(sock, &message[idx++], 1))
 	{
 		if(read_len==-1)
