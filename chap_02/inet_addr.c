@@ -4,7 +4,7 @@
 int main(int argc, char *argv[])
 {
 	char *addr1="127.212.124.78";
-	char *addr2="127.212.124.256";
+	char *addr2="127.212.124.254";
 
 	unsigned long conv_addr=inet_addr(addr1);
 	if(conv_addr==INADDR_NONE)
