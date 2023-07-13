@@ -26,7 +26,7 @@ void    EchoClient::conServ(){
         write(sock, message, strlen(message));
         rdMessageLen = read(sock, message, BUF_SIZE - 1);
         message[rdMessageLen] = 0;
-        std::cout << "message from server: " << message << "\n";
+        std::cout << "message from server: " << message;
     }
     std::cout << "connection closed\n";
 }
