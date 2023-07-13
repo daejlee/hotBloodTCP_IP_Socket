@@ -23,9 +23,11 @@ void    EchoClient::conServ(){
         fgets(message, BUF_SIZE, stdin);
         if (!strcmp(message, "Q\n") || !strcmp(message, "q\n"))
             break ;
-        write(sock, message, strlen(message));
-        rdMessageLen = read(sock, message, BUF_SIZE - 1);
-        message[rdMessageLen] = 0;
+        int wrtnStrLen = write(sock, message, strlen(message));
+        int totalMessageLen = 0;
+        while (totalMessageLen < wrtnStrLen)
+            totalMessageLen += read(sock, &message[totalMessageLen], BUF_SIZE - 1);
+        message[totalMessageLen] = 0;
         std::cout << "message from server: " << message;
     }
     std::cout << "connection closed\n";

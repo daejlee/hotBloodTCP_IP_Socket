@@ -1,11 +1,11 @@
 all: eserver
 
 eserver: EchoServer.cpp EchoClient.cpp
-	c++ -o eserver EchoServer.cpp
-	c++ -o eclient EchoClient.cpp
+	c++ -g -o eserver EchoServer.cpp
+	c++ -g -o eclient EchoClient.cpp
 
 clean:
-	rm -f *.o
+	rm -rf *.o *.dSYM
 
 fclean: clean
 	rm -f eserver eclient
