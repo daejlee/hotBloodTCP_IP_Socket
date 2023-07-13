@@ -1,8 +1,8 @@
 #include "EchoServer.hpp"
 
-EchoServer::EchoServer(int argc, const char* argv[]){
+EchoServer::EchoServer(int argc, char* argv[]){
     if (argc != 2)
-        throw std::invalid_argument("invalid port number");
+        throw std::invalid_argument("invalid arg count");
     servSock = socket(PF_INET, SOCK_STREAM, 0);
     if (servSock == -1)
         throw std::runtime_error("socket() error");
@@ -36,7 +36,7 @@ EchoServer::~EchoServer(){
     std::cout << "Server closed\n";
 }
 
-int main(int argc, const char *argv[]){
+int main(int argc, char* argv[]){
     try {
         EchoServer  S(argc, argv);
         S.acceptClients();

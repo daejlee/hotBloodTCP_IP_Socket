@@ -18,7 +18,7 @@ class EchoServer {
         struct sockaddr_in  clntAdr;
         socklen_t           clntAdrSize;
     public:
-                            EchoServer(int argc, const char* argv[]);
+                            EchoServer(int argc, char* argv[]);
         void                acceptClients();
                             ~EchoServer();
 };
