@@ -1,6 +1,6 @@
 #include "EchoServer.hpp"
 
-EchoServer::EchoServer(int argc, char* argv[]){
+EchoServer::EchoServer(int argc, char* argv[]) {
     if (argc != 2)
         throw std::invalid_argument("invalid arg count");
     servSock = socket(PF_INET, SOCK_STREAM, 0);
@@ -19,7 +19,7 @@ EchoServer::EchoServer(int argc, char* argv[]){
     clntAdrSize = sizeof(clntAdr);
 }
 
-void    EchoServer::acceptClients(){
+void    EchoServer::acceptClients() {
     for (int i = 0; i < 5; i++){
         clntSock = accept(servSock, (struct sockaddr*)&clntAdr, &clntAdrSize);
         if (clntSock == -1)
@@ -31,12 +31,12 @@ void    EchoServer::acceptClients(){
     }
 }
 
-EchoServer::~EchoServer(){
+EchoServer::~EchoServer() {
     close(servSock);
     std::cout << "Server closed\n";
 }
 
-int main(int argc, char* argv[]){
+int main(int argc, char* argv[]) {
     try {
         EchoServer  S(argc, argv);
         S.acceptClients();
