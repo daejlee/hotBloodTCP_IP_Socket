@@ -13,7 +13,6 @@ class EchoClient
     private:
         int                 sock;
         char                message[BUF_SIZE];
-        int                 rdMessageLen;
         struct sockaddr_in  servAdr;
     public:
                             EchoClient(int argc, char* argv[]);
