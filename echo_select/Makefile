@@ -1,7 +1,7 @@
 all: es_server
 
-es_server: EchoSelectServer.cpp EchoClient.cpp
-	c++ -g -o es_server EchoSelectServer.cpp
+es_server: EchoServer.cpp EchoClient.cpp
+	c++ -g -o es_server EchoServer.cpp
 	c++ -g -o eclient EchoClient.cpp
 
 clean:
