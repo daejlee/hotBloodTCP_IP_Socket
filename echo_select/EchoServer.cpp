@@ -21,7 +21,7 @@ void  EchoServer::prepServ(char* argv[]) {
   serv_adr_.sin_addr.s_addr = htonl(INADDR_ANY);
   serv_adr_.sin_port = htons(atoi(argv[1]));
 
-  if (bind(serv_sock_, (struct sockaddr*)&serv_adr_, sizeof(serv_adr_) == -1))
+  if (bind(serv_sock_, (struct sockaddr*)&serv_adr_, sizeof(serv_adr_)) == -1)
     throw std::runtime_error("bind() ERROR");
   else if (listen(serv_sock_, 15) == -1)
     throw std::runtime_error("listen() ERROR");
@@ -69,12 +69,12 @@ void  EchoServer::launchServ() {
   FD_ZERO(&reads);
   FD_SET(serv_sock_, &reads);
   fd_max = serv_sock_;
-  timeout.tv_sec = 5;
-  timeout.tv_usec = 0;
 
   while (1) {
+    timeout.tv_sec = 5;
+    timeout.tv_usec = 5000;
     r_reads = reads;
-    if ((sel_ret = select(fd_max + 1, &r_reads, 0, 0, &timeout) == -1))
+    if (((sel_ret = select(fd_max + 1, &r_reads, 0, 0, &timeout)) == -1))
       throw std::runtime_error("select() ERROR");
     else if (!sel_ret)
       continue;
