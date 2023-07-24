@@ -8,7 +8,8 @@
 # include <cstring>
 # include <unistd.h>
 
-class EchoClient {
+class EchoClient
+{
     private:
         int                 sock;
         char                message[BUF_SIZE];
