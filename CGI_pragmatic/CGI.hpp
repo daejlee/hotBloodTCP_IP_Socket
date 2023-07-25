@@ -18,7 +18,7 @@ class CGI{
     int   clnt_ident_;
     pid_t cgi_pid_;
     std::string script_name_;
-    Kqueue* kq_ptr_;
+    Kqueue& kq_ptr_;
 };
 
 #endif
